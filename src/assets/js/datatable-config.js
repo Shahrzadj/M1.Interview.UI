@@ -8,7 +8,7 @@ var datatableConfig = {
       data: null,
       render: function (data, type, full, meta) {
         return `
-         <button class="btn btn-sm btn-success" id="showChart-button" data-id="${data.id}" data-row=${meta.row} onclick="showChartModule.fillInputs(${data.id},${meta.row})" type="button" >
+         <button class="btn btn-sm btn-success showChart-button" data-id="${data.id}" data-row=${meta.row} onclick="showChartModule.fillInputs(${data.id},${meta.row})" type="button" >
         <i class="fa fa-line-chart fa-lg" aria-hidden="true"></i>
         </button>
         <button  class="btn btn-sm btn-warning edit-button" data-id="${data.id}" data-row=${meta.row} onclick="editUserModule.fillInputs(${data.id},${meta.row})" type="button" data-toggle="modal" data-target="#editModal">
