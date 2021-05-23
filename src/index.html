@@ -9,10 +9,12 @@
   <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.2.7/css/responsive.bootstrap4.min.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
   <link rel="stylesheet" href="assets/css/index.css" />
-
 </head>
-
-<body>
+<!-- style="background-image: url('/src/assets/images/4.jpg');background-repeat: no-repeat;
+background-attachment: fixed;
+background-size: cover;" -->
+<body style="background-color: #ecf4fe;
+" >
   <div id="loading"></div>
   <div class="table-container">
     <table id="table" class="display table table-striped table-bordered dt-responsive wrap" style="width: 100%">
@@ -30,10 +32,11 @@
 
   <!-- add Modal -->
   <div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-labelledby="addModalLabel" aria-hidden="true">
+    <form action="" name="addPerson">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="addModalLabel">Add User</h5>
+          <h5 class="modal-title" id="addModalLabel">Add Personnel</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
@@ -41,39 +44,33 @@
         <div class="modal-body">
           <div class="form-group">
             <label for="addName">Name:</label>
-            <input type="text" class="form-control" id="addName" />
+            <input type="text" class="form-control" id="addName"name="addName" placeholder="Enter Your Name" />
           </div>
           <div class="form-group">
-            <label for="addPhoneNumber">Phone number:</label>
-            <input type="text" class="form-control" id="addPhoneNumber" />
+            <label for="addPhone">Phone number:</label>
+            <input type="text" class="form-control" id="addPhone" name="addPhone"placeholder="Enter Your Phone"/>
           </div>
           <div class="form-group">
-            <label for="addEmail">Email:</label>
-            <input type="email" class="form-control" id="addEmail" />
-          </div>
-          <div class="form-group">
-            <label for="addPassword">Password:</label>
-            <input type="password" class="form-control" id="addPassword" />
-          </div>
-          <div class="form-check">
-            <input type="checkbox" class="form-check-input" id="addSuspend" />
-            <label class="form-check-label" for="addSuspend">Is Suspended?</label>
+            <label for="addAge">Age:</label>
+            <input type="number" class="form-control" id="addAge" name="addAge" placeholder="Enter Your Age"/>
           </div>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">
             Close
           </button>
-          <button type="button" class="btn btn-success" id="save-button">
+          <button type="submit" class="btn btn-success" id="save-button">
             Save
           </button>
         </div>
       </div>
     </div>
+  </form>
   </div>
   <!-- edit Modal -->
   <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="editModalLabel"
     aria-hidden="true">
+    <form action="" name="editPerson">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
@@ -85,27 +82,17 @@
         <div class="modal-body">
           <input type="hidden" id="editId" />
           <input type="hidden" id="editRowNumber" />
-          <input type="hidden" id="editLastLogin" />
-          <input type="hidden" id="editCreateDate" />
           <div class="form-group">
             <label for="editName">Name:</label>
-            <input type="text" class="form-control" id="editName" />
+            <input type="text" class="form-control" id="editName" name="editName" />
           </div>
           <div class="form-group">
-            <label for="editPhoneNumber">Phone number:</label>
-            <input type="text" class="form-control" id="editPhoneNumber" />
+            <label for="editPhone">Phone number:</label>
+            <input type="text" class="form-control" id="editPhone" name="editPhone" />
           </div>
           <div class="form-group">
-            <label for="editEmail">Email:</label>
-            <input type="email" class="form-control" id="editEmail" />
-          </div>
-          <div class="form-group">
-            <label for="editPassword">Password:</label>
-            <input type="password" class="form-control" id="editPassword" />
-          </div>
-          <div class="form-check">
-            <input type="checkbox" class="form-check-input" id="editSuspend" />
-            <label class="form-check-label" for="editSuspend">Is Suspended?</label>
+            <label for="editAge">Age:</label>
+            <input type="number" class="form-control" id="editAge"  name="editAge"/>
           </div>
         </div>
         <div class="modal-footer">
@@ -118,6 +105,7 @@
         </div>
       </div>
     </div>
+    </form>
   </div>
   <!-- delete Modal -->
   <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel"
@@ -171,9 +159,6 @@
           <button type="button" class="btn btn-secondary" data-dismiss="modal">
             Close
           </button>
-          <button type="button" class="btn btn-success" id="save-button">
-            Save
-          </button>
         </div>
       </div>
     </div>
@@ -200,6 +185,8 @@
   <script src="assets/js/edit-user.js"></script>
   <script src="assets/js/delete-user.js"></script>
   <script src="assets/js/showChart.js"></script>
+  <script src="assets/lib/JqueryValidate/jquery.validate.min.js"></script>
+  <script src="assets/js/form-validation.js"></script>
   <script src="index.js"></script>
   <script>
 

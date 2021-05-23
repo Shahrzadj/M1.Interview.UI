@@ -1,9 +1,9 @@
 var datatableConfig = {
   columns: [
-    { data: "id", "autoWidth": true },
-    { data: "name", "autoWidth": true },
-    { data: "phone", "autoWidth": true },
-    { data: "age", "autoWidth": true },
+    { data: "id", autoWidth: true },
+    { data: "name", autoWidth: true },
+    { data: "phone", autoWidth: true },
+    { data: "age", autoWidth: true },
     {
       data: null,
       render: function (data, type, full, meta) {
@@ -27,7 +27,7 @@ var datatableConfig = {
   getAllUsers: function () {
     let temp = [];
     $.ajax({
-      url: `${config.apiUrl}gateway/personnel`,
+      url: `${config.apiUrl}/gateway/personnel`,
       type: "GET",
       async: false,
       contentType: "application/json; charset=utf-8",
@@ -49,11 +49,9 @@ var datatableConfig = {
       data: this.getAllUsers(),
       aoColumns: this.columns,
       responsive: true,
-      // scrollY: "80vh",
-      // scrollCollapse: true,
       oLanguage: {
         sSearch: "",
-        sSearchPlaceholder: "Search",
+        sSearchPlaceholder: "Enter your search key word!",
         sLengthMenu: "_MENU_ ",
       },
       lengthMenu: [5, 15, 25, 50, 75, 100],
