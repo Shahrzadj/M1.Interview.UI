@@ -13,7 +13,7 @@ var showChartModule = {
       ctx.canvas.height = 400; // resize to parent height
       var id = $("#deleteId").val();
       $.ajax({
-        url: `${config.apiUrl}/gateway/sales/${id}`,
+        url: `${setting.apiGatewayUrl}/gateway/sales/${id}`,
         type: "GET",
         async: false,
         contentType: "application/json; charset=utf-8",

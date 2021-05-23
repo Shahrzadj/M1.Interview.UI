@@ -3,14 +3,14 @@ $(function() {
     $("form[name='addPerson']").validate({
       // Specify validation rules
       rules: {
-        addName: "required",
-        addAge: {
+        newPersonName: "required",
+        newPersonAge: {
           required: true,
           min:18,
           max:100,
           number: true
         },
-        addPhone: {
+        newPersonPhone: {
           required: true,
           minlength: 8,
           number: true
@@ -18,7 +18,7 @@ $(function() {
       },
       // Specify validation error messages
       messages: {
-        addPhone: {
+        newPersonPhone: {
           minlength: "Your phone number must be at least 8 characters long"
         }      },
       // Make sure the form is submitted to the destination defined
@@ -30,14 +30,14 @@ $(function() {
     $("form[name='editPerson']").validate({
         // Specify validation rules
         rules: {
-            editName: "required",
-          editAge: {
+            editedpersonName: "required",
+          editedpersonAge: {
             required: true,
             min:18,
             max:100,
             number: true
           },
-          editPhone: {
+          editedpersonPhone: {
             required: true,
             minlength: 8,
             number: true
@@ -45,7 +45,7 @@ $(function() {
         },
         // Specify validation error messages
         messages: {
-            editPhone: {
+            editedpersonPhone: {
             minlength: "Your phone number must be at least 8 characters long"
           }      },
         // Make sure the form is submitted to the destination defined

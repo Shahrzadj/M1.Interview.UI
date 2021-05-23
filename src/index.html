@@ -4,24 +4,28 @@
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css" />
-  <link rel="stylesheet" href="https://cdn.datatables.net/1.10.24/css/dataTables.bootstrap4.min.css" />
-  <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.2.7/css/responsive.bootstrap4.min.css" />
+  <!-- add-stylesheets! -->
+  <link rel="stylesheet" href="assets/lib/bootstrap/bootstrap.css" />
+  <link rel="stylesheet" href="assets/lib/dataTable/dataTables.bootstrap4.min.css" />
+  <link rel="stylesheet" href="assets/lib/dataTable/responsive.bootstrap4.min.css" />
+  <link rel="stylesheet" href="assets/lib/dataTable/responsive.bootstrap4.min.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
   <link rel="stylesheet" href="assets/css/index.css" />
+   <!-- end-stylesheets! -->
 </head>
-<!-- style="background-image: url('/src/assets/images/4.jpg');background-repeat: no-repeat;
-background-attachment: fixed;
-background-size: cover;" -->
-<body style="background-color: #ecf4fe;
-" >
+<body >
   <div id="loading"></div>
+  <!-- set table columns -->
   <div class="table-container">
-    <table id="table" class="display table table-striped table-bordered dt-responsive wrap" style="width: 100%">
+    <table id="showPersonnelTable" class="display table table-striped table-bordered dt-responsive wrap">
       <thead>
         <tr>
+          <th colspan="4"> Marketing Department Personnel Information</th>
+          <th colspan="1">Operations</th>
+      </tr>
+        <tr>
           <th>Id</th>
-          <th>Name</th>
+          <th>Full Name</th>
           <th>Phone Number</th>
           <th>Age</th>
           <th></th>
@@ -29,122 +33,14 @@ background-size: cover;" -->
       </thead>
     </table>
   </div>
-
-  <!-- add Modal -->
-  <div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-labelledby="addModalLabel" aria-hidden="true">
-    <form action="" name="addPerson">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="addModalLabel">Add Personnel</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-          <div class="form-group">
-            <label for="addName">Name:</label>
-            <input type="text" class="form-control" id="addName"name="addName" placeholder="Enter Your Name" />
-          </div>
-          <div class="form-group">
-            <label for="addPhone">Phone number:</label>
-            <input type="text" class="form-control" id="addPhone" name="addPhone"placeholder="Enter Your Phone"/>
-          </div>
-          <div class="form-group">
-            <label for="addAge">Age:</label>
-            <input type="number" class="form-control" id="addAge" name="addAge" placeholder="Enter Your Age"/>
-          </div>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">
-            Close
-          </button>
-          <button type="submit" class="btn btn-success" id="save-button">
-            Save
-          </button>
-        </div>
-      </div>
-    </div>
-  </form>
-  </div>
-  <!-- edit Modal -->
-  <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="editModalLabel"
-    aria-hidden="true">
-    <form action="" name="editPerson">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="editModalLabel">Edit User</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-          <input type="hidden" id="editId" />
-          <input type="hidden" id="editRowNumber" />
-          <div class="form-group">
-            <label for="editName">Name:</label>
-            <input type="text" class="form-control" id="editName" name="editName" />
-          </div>
-          <div class="form-group">
-            <label for="editPhone">Phone number:</label>
-            <input type="text" class="form-control" id="editPhone" name="editPhone" />
-          </div>
-          <div class="form-group">
-            <label for="editAge">Age:</label>
-            <input type="number" class="form-control" id="editAge"  name="editAge"/>
-          </div>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">
-            Close
-          </button>
-          <button type="button" class="btn btn-warning" id="update-button">
-            Update
-          </button>
-        </div>
-      </div>
-    </div>
-    </form>
-  </div>
-  <!-- delete Modal -->
-  <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel"
-    aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="deleteModalLabel">Delete Person
-          </h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-          <input type="hidden" id="deleteRowNumber" />
-          <input type="hidden" id="deleteId" />
-          <p>Are you sure you want to DELETE Person
-            " <label type="text" id="currentUserName"></label>" ?
-          </p>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">
-            No, Close
-          </button>
-          <button type="button" class="btn btn-danger" id="delete-button">
-            Confirm, Delete!
-          </button>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!--show sales-->
-  <div class="modal fade" id="showChartModal" tabindex="-1" role="dialog" aria-labelledby="addModalLabel"
+ <!-- end set table columns -->
+  <!--show sales Modal-->
+  <div class="modal fade" id="showChartModal" tabindex="-1" role="dialog" aria-labelledby="showChartLabel"
     aria-hidden="true">
     <div class="modal-dialog" role="document" style="max-width: 600px !important;">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="addModalLabel">Sales Chart</h5>
+          <h5 class="modal-title" id="showChartLabel">Sales Chart</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
@@ -163,34 +59,147 @@ background-size: cover;" -->
       </div>
     </div>
   </div>
-  <!-- Scripts -->
+    <!--end show sales Modal-->
+  <!-- add new person Modal -->
+  <div class="modal fade" id="addPerson" tabindex="-1" role="dialog" aria-labelledby="addPersonLabel" aria-hidden="true">
+    <form action="" name="addPerson">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="addPersonLabel">Add New Person</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="form-group">
+            <label for="newPersonName">Name:</label>
+            <input type="text" class="form-control" id="newPersonName"name="newPersonName" placeholder="Enter Your Name" />
+          </div>
+          <div class="form-group">
+            <label for="newPersonPhone">Phone number:</label>
+            <input type="number" class="form-control" id="newPersonPhone" name="newPersonPhone"placeholder="Enter Your Phone"/>
+          </div>
+          <div class="form-group">
+            <label for="newPersonAge">Age:</label>
+            <input type="number" class="form-control" id="newPersonAge" name="newPersonAge" placeholder="Enter Your Age"/>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">
+            Close
+          </button>
+          <button type="submit" class="btn btn-success" id="save-button">
+            Save Changes!
+          </button>
+        </div>
+      </div>
+    </div>
+  </form>
+  </div>
+ <!-- end add new person Modal -->
+  <!-- update person Modal -->
+  <div class="modal fade" id="editpersonModal" tabindex="-1" role="dialog" aria-labelledby="editpersonModalLabel"
+    aria-hidden="true">
+    <form action="" name="editPerson">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="editpersonModalLabel">Edit Person</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <input type="hidden" id="editId" />
+          <input type="hidden" id="editRowNumber" />
+          <div class="form-group">
+            <label for="editedpersonName">Name:</label>
+            <input type="text" class="form-control" id="editedpersonName" name="editedpersonName" />
+          </div>
+          <div class="form-group">
+            <label for="editedpersonPhone">Phone number:</label>
+            <input type="text" class="form-control" id="editedpersonPhone" name="editedpersonPhone" />
+          </div>
+          <div class="form-group">
+            <label for="editedpersonAge">Age:</label>
+            <input type="number" class="form-control" id="editedpersonAge"  name="editedpersonAge"/>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">
+            Close
+          </button>
+          <button type="button" class="btn btn-warning" id="update-button">
+            Update
+          </button>
+        </div>
+      </div>
+    </div>
+    </form>
+  </div>
+    <!-- end update person Modal -->
+  <!-- delete person Modal -->
+  <div class="modal fade" id="deletePersonModal" tabindex="-1" role="dialog" aria-labelledby="deletePersonModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="deletePersonModalLabel">Delete Person
+          </h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <input type="hidden" id="deleteRowNumber" />
+          <input type="hidden" id="deleteId" />
+          <p>Are you sure you want to delete person with name :
+            " <label type="text" id="selectedPersonName"></label>" ?
+          </p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">
+            No, Close
+          </button>
+          <button type="button" class="btn btn-danger" id="delete-button">
+            Confirm, Delete!
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!--end delete person Modal -->
+ 
 
-
-  <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
-  <script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
-  <script src="https://cdn.datatables.net/1.10.24/js/dataTables.bootstrap4.min.js"></script>
-  <script src="https://cdn.datatables.net/responsive/2.2.7/js/dataTables.responsive.min.js"></script>
-  <script src="https://cdn.datatables.net/responsive/2.2.7/js/responsive.bootstrap4.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js"
-    integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh"
-    crossorigin="anonymous"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"
-    integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ"
-    crossorigin="anonymous"></script>
-  <script src="assets/lib/moment/moment.min.js"></script>
+ <!-- Scripts -->
+ <!-- lib scripts -->
+ <script src="assets/lib/jquery/jquery-3.5.1.js"></script>
+ <script src="assets/lib/JqueryValidate/jquery.validate.min.js"></script>
+ <script src="assets/lib/popper/popper.min.js"></script>
+ <script src="assets/lib/bootstrap/bootstrap.min.js"></script>
+ <script src="assets/lib/dataTable/jquery.dataTables.min.js"></script>
+ <script src="assets/lib/dataTable/dataTables.bootstrap4.min.js"></script>
+ <script src="assets/lib/dataTable/dataTables.responsive.min.js"></script>
+ <script src="assets/lib/bootstrap/responsive.bootstrap4.min.js"></script>
   <script src="assets/lib/chart/chart.js"></script>
-  <script src="assets/js/_config.js"></script>
-  <script src="assets/js/datatable-config.js"></script>
-  <script src="assets/js/add-user.js"></script>
-  <script src="assets/js/edit-user.js"></script>
-  <script src="assets/js/delete-user.js"></script>
-  <script src="assets/js/showChart.js"></script>
-  <script src="assets/lib/JqueryValidate/jquery.validate.min.js"></script>
-  <script src="assets/js/form-validation.js"></script>
-  <script src="index.js"></script>
-  <script>
+ <script src="assets/lib/moment/moment.min.js"></script>
+ <!-- end lib scripts -->
 
-  </script>
+ <!-- project setting loading -->
+  <script src="projectSettings/generalSetting.js"></script>
+  <script src="projectSettings/tableSpecifications.js"></script>
+  <script src="projectSettings/formValidationRules.js"></script>
+  <!-- end project setting loading -->
+ <!-- CRUD scripts -->
+ <script src="assets/js/createPerson.js"></script>
+ <script src="assets/js/updatePerson.js"></script>
+ <script src="assets/js/deletePerson.js"></script>
+ <script src="assets/js/showChart.js"></script>
+ <!-- end CRUD scripts -->
+   <!-- base js -->
+   <script src="index.js"></script>
+   <!-- end base js -->
 </body>
 
 </html>
