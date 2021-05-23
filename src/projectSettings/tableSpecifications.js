@@ -11,10 +11,10 @@ let tableSetting = {
          <button class="btn btn-sm btn-success showChart-button" data-id="${data.id}" data-row=${meta.row} onclick="showChartModule.fillInputs(${data.id},${meta.row})" type="button" >
         <i class="fa fa-line-chart fa-lg" aria-hidden="true"></i>
         </button>
-        <button  class="btn btn-sm btn-warning edit-button" data-id="${data.id}" data-row=${meta.row} onclick="editUserModule.fillInputs(${data.id},${meta.row})" type="button" data-toggle="modal" data-target="#editpersonModal">
+        <button  class="btn btn-sm btn-warning edit-button" data-id="${data.id}" data-row=${meta.row} onclick="editPersonModule.fillInputs(${data.id},${meta.row})" type="button" data-toggle="modal" data-target="#editpersonModal">
             <i class="fa fa-pencil fa-lg" aria-hidden="true"></i>
             </button>
-            <button class="btn btn-sm btn-danger delete-button" data-id="${data.id}" data-row=${meta.row} onclick="delteUserModule.fillInputs(${data.id},${meta.row})" type="button" data-toggle="modal" data-target="#deletePersonModal">
+            <button class="btn btn-sm btn-danger delete-button" data-id="${data.id}" data-row=${meta.row} onclick="deletePersonModule.fillInputs(${data.id},${meta.row})" type="button" data-toggle="modal" data-target="#deletePersonModal">
             <i class="fa fa-trash fa-lg" aria-hidden="true"></i>
             </button>   
            `;

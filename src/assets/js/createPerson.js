@@ -41,8 +41,6 @@ $("#save-button").on("click", function (e) {
       data: JSON.stringify(addedPersonnel.data),
       success: function (response) {
         $("#addPerson").modal("toggle");
-        console.log(`table`, table);
-        console.log(`response`, response);
         table.row.add(response).draw(false, null);
         createPersonModule.clearInputs();
       },

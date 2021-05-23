@@ -2,18 +2,18 @@ var editPersonModule = {
   getObject: function () {
     var editedUser = {
       id: Number($("#editId").val()),
-      name: $("#editName").val(),
-      phone: $("#editPhone").val(),
-      age: Number($("#editAge").val()),
+      name: $("#editedpersonName").val(),
+      phone: $("#editedpersonPhone").val(),
+      age: Number($("#editedpersonAge").val()),
     };
     return { data: editedUser };
   },
   fillInputs: function (id) {
     var row = table.data().filter((user) => user.id === id)[0];
     $("#editId").val(row.id);
-    $("#editName").val(row.name);
-    $("#editPhone").val(row.phone);
-    $("#editAge").val(row.age);
+    $("#editedpersonName").val(row.name);
+    $("#editedpersonPhone").val(row.phone);
+    $("#editedpersonAge").val(row.age);
   },
   handleSubmit: function () {
   },
@@ -27,14 +27,11 @@ $("form[name='addPerson']").submit(function(e) {
 $("#update-button").on("click", function (e) {
   e.preventDefault();
   $("form[name='editPerson']").validate();
-  console.log( );  // <- T
   if($("form[name='editPerson']").valid()){
-    var editedUser = editUserModule.getObject();
-
+    var editedUser = editPersonModule.getObject();
     var id = $(`#editId`).val();
     var btn = $("tr").find(`button.edit-button[data-id='${id}']`)[0];
     var tr = $(btn).closest("tr");
-
     $.ajax({
       url: `${setting.apiGatewayUrl}/gateway/personnel`,
       type: "PUT",
@@ -43,7 +40,7 @@ $("#update-button").on("click", function (e) {
       data: JSON.stringify(editedUser.data),
       success: function (response) {
         table.row(tr).data(response).draw(false, null);
-        $("#editModal").modal("toggle");
+        $("#editpersonModal").modal("toggle");
       },
     });
   }

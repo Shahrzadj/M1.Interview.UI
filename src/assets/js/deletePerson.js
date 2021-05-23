@@ -3,7 +3,6 @@ var deletePersonModule = {
     $("#deleteId").val(id);
     var row = table.data().filter((user) => user.id === id)[0];
     document.getElementById("selectedPersonName").innerHTML = row.name;
-    console.log(row);
   },
   handleSubmit: function () {
     $("#delete-button").on("click", function () {

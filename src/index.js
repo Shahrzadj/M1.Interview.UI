@@ -1,6 +1,6 @@
-
+var table = $("#showPersonnelTable").DataTable(tableSetting.options());
 $(function() {
-  var table = $("#showPersonnelTable").DataTable(tableSetting.options());
+ 
 
   LoadCRUDModules();
   $("input").attr("autocomplete", "off");
