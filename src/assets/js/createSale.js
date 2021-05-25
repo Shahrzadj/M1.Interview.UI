@@ -20,12 +20,15 @@ var createSaleModule = {
         var addedSale = {
             personnelId: Number($("#newSalePersonId").val()),
             salesAmount: Number($("#newSaleAmount").val()),
-            year: $("#newSaleYear").val(),
-            month: $("#newSaleMonth").val(),
-            day: $("#newSaleDay").val()
+            year: Number($("#newSaleYear").val()),
+            month: Number($("#newSaleMonth").val()),
+            day: Number($("#newSaleDay").val())
         };
         return { data: addedSale };
-    },
+    }, 
+    clearInputs: function () {
+        $("#newSalePersonId").val(""), $("#newSaleAmount").val(""), $("#newSaleYear").val(""), $("#newSaleMonth").val(""), $("#newSaleDay").val("");
+      }
 };
 $("form[name='addSale']").submit(function (e) {
     e.preventDefault();
@@ -43,7 +46,12 @@ $("#save-sale-button").on("click", function (e) {
             contentType: "application/json; charset=utf-8",
             data: JSON.stringify(addedSale.data),
             success: function (response) {
-                $("#addSaleModal").modal("toggle");
+                // $("#addSaleModal").modal("toggle");
+                setTimeout(function(){
+                    $('#message').fadeOut("slow");
+                },2000)
+                document.getElementById("message").innerHTML = "Sale item created Successfully!";
+                $('#message').show();
                 createSaleModule.clearInputs();
             },
         });
