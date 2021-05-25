@@ -67,8 +67,7 @@ $(function () {
       },
       selectedYear: {
         required: true,
-        min: 2010,
-        max: 2020,
+        max: new Date().getFullYear(),
         number: true
       }
     },
@@ -100,19 +99,12 @@ $(function () {
       },
       newSaleYear: {
         required: true,
-        min: 2010,
-        max: 2020,
+        max: new Date().getFullYear(),
         number: true
       },
       newSaleDay: {
         required: true,
         min: 1,
-        max: 31,
-        number: true
-      },
-      newSaleDay: {
-        required: true,
-        min: 0,
         max: 31,
         number: true
       }
