@@ -11,9 +11,10 @@
   <link rel="stylesheet" href="assets/lib/dataTable/responsive.bootstrap4.min.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
   <link rel="stylesheet" href="assets/css/index.css" />
-   <!-- end-stylesheets! -->
+  <!-- end-stylesheets! -->
 </head>
-<body >
+
+<body>
   <div id="loading"></div>
   <!-- set table columns -->
   <div class="table-container">
@@ -22,7 +23,7 @@
         <tr>
           <th colspan="4"> Marketing Department Personnel Information</th>
           <th colspan="1">Operations</th>
-      </tr>
+        </tr>
         <tr>
           <th>Id</th>
           <th>Full Name</th>
@@ -33,14 +34,56 @@
       </thead>
     </table>
   </div>
- <!-- end set table columns -->
+  <!-- end set table columns -->
+  <!--show sales Modal ---ask info-->
+  <div class="modal fade" id="askForChartInfo" tabindex="-1" role="dialog" aria-labelledby="askForChartInfoLabel"
+    aria-hidden="true">
+    <form action="" name="getInfo">
+      <div class="modal-dialog" role="document" style="max-width: 600px !important;">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="showChartLabel">Enter info to show chart for " <label type="text"
+                id="PersonNameForInfo"></label>" </h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <input type="hidden" id="currentId" />
+
+          <div class="modal-body">
+            <div class="form-group">
+              <label for="selectedMonth">Enter Month Number:</label>
+              <input type="text" class="form-control" id="selectedMonth" name="selectedMonth"
+                placeholder="Enter Month Number" />
+            </div>
+            <div class="form-group">
+              <label for="selectedYear">Enter Year :</label>
+              <input type="number" class="form-control" id="selectedYear" name="selectedYear"
+                placeholder="Enter Year" />
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">
+              Close
+            </button>
+            <button type="submit" class="btn btn-success" id="showChartWithInfo">
+              Show Chart
+            </button>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+  <!--end show sales Modal-->
   <!--show sales Modal-->
   <div class="modal fade" id="showChartModal" tabindex="-1" role="dialog" aria-labelledby="showChartLabel"
     aria-hidden="true">
     <div class="modal-dialog" role="document" style="max-width: 600px !important;">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="showChartLabel">Sales Chart</h5>
+          <h5 class="modal-title" id="showChartLabel">Sales Chart For " <label type="text"
+              id="PersonNameForshowChart"></label> " For Month " <label type="text" id="monthForshowChart"> </label> "
+          </h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
@@ -59,86 +102,143 @@
       </div>
     </div>
   </div>
-    <!--end show sales Modal-->
-  <!-- add new person Modal -->
-  <div class="modal fade" id="addPerson" tabindex="-1" role="dialog" aria-labelledby="addPersonLabel" aria-hidden="true">
-    <form action="" name="addPerson">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="addPersonLabel">Add New Person</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-          <div class="form-group">
-            <label for="newPersonName">Name:</label>
-            <input type="text" class="form-control" id="newPersonName"name="newPersonName" placeholder="Enter Your Name" />
+  <!--end show sales Modal-->
+  <!-- add new sale Modal -->
+  <div class="modal fade" id="addSaleModal" tabindex="-1" role="dialog" aria-labelledby="addSaleLabel"
+    aria-hidden="true">
+    <form action="" name="addSale">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="addSaleLabel">Add New Sale</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
           </div>
-          <div class="form-group">
-            <label for="newPersonPhone">Phone number:</label>
-            <input type="number" class="form-control" id="newPersonPhone" name="newPersonPhone"placeholder="Enter Your Phone"/>
+          <div class="modal-body">
+            <div class="form-group">
+              <label for="newSalePersonId">Person Id:</label>
+              <input type="text" class="form-control" id="newSalePersonId" name="newSalePersonId"
+                placeholder="Enter Person Id" />
+            </div>
+            <div class="form-group">
+              <label for="newSaleYear">Report Year:</label>
+              <input type="number" class="form-control" id="newSaleYear" name="newSaleYear"
+                placeholder="Enter Your Phone" />
+            </div>
+            <div class="form-group">
+              <label for="newSaleMonth">Report Month:</label>
+              <input type="number" class="form-control" id="newSaleMonth" name="newSaleMonth"
+                placeholder="Enter Your Phone" />
+            </div>
+            <div class="form-group">
+              <label for="newSaleDay">Report Day:</label>
+              <input type="number" class="form-control" id="newSaleDay" name="newSaleDay"
+                placeholder="Enter Your Phone" />
+            </div>
+
+            <div class="form-group">
+              <label for="newSaleAmount">Sale Amount:</label>
+              <input type="number" class="form-control" id="newSaleAmount" name="newSaleAmount"
+                placeholder="Enter Your Age" />
+            </div>
           </div>
-          <div class="form-group">
-            <label for="newPersonAge">Age:</label>
-            <input type="number" class="form-control" id="newPersonAge" name="newPersonAge" placeholder="Enter Your Age"/>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">
+              Close
+            </button>
+            <button type="submit" class="btn btn-success" id="save-sale-button">
+              Save Changes!
+            </button>
           </div>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">
-            Close
-          </button>
-          <button type="submit" class="btn btn-success" id="save-button">
-            Save Changes!
-          </button>
         </div>
       </div>
-    </div>
-  </form>
+    </form>
   </div>
- <!-- end add new person Modal -->
+  <!-- end add new sale Modal -->
+  <!-- add new person Modal -->
+  <div class="modal fade" id="addPerson" tabindex="-1" role="dialog" aria-labelledby="addPersonLabel"
+    aria-hidden="true">
+    <form action="" name="addPerson">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="addPersonLabel">Add New Person</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <div class="form-group">
+              <label for="newPersonName">Name:</label>
+              <input type="text" class="form-control" id="newPersonName" name="newPersonName"
+                placeholder="Enter Your Name" />
+            </div>
+            <div class="form-group">
+              <label for="newPersonPhone">Phone number:</label>
+              <input type="number" class="form-control" id="newPersonPhone" name="newPersonPhone"
+                placeholder="Enter Your Phone" />
+            </div>
+            <div class="form-group">
+              <label for="newPersonAge">Age:</label>
+              <input type="number" class="form-control" id="newPersonAge" name="newPersonAge"
+                placeholder="Enter Your Age" />
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">
+              Close
+            </button>
+            <button type="submit" class="btn btn-success" id="save-button">
+              Save Changes!
+            </button>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+  <!-- end add new person Modal -->
   <!-- update person Modal -->
   <div class="modal fade" id="editpersonModal" tabindex="-1" role="dialog" aria-labelledby="editpersonModalLabel"
     aria-hidden="true">
     <form action="" name="editPerson">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="editpersonModalLabel">Edit Person</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-          <input type="hidden" id="editId" />
-          <input type="hidden" id="editRowNumber" />
-          <div class="form-group">
-            <label for="editedpersonName">Name:</label>
-            <input type="text" class="form-control" id="editedpersonName" name="editedpersonName" />
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="editpersonModalLabel">Edit Person</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
           </div>
-          <div class="form-group">
-            <label for="editedpersonPhone">Phone number:</label>
-            <input type="text" class="form-control" id="editedpersonPhone" name="editedpersonPhone" />
+          <div class="modal-body">
+            <input type="hidden" id="editId" />
+            <input type="hidden" id="editRowNumber" />
+            <div class="form-group">
+              <label for="editedpersonName">Name:</label>
+              <input type="text" class="form-control" id="editedpersonName" name="editedpersonName" />
+            </div>
+            <div class="form-group">
+              <label for="editedpersonPhone">Phone number:</label>
+              <input type="text" class="form-control" id="editedpersonPhone" name="editedpersonPhone" />
+            </div>
+            <div class="form-group">
+              <label for="editedpersonAge">Age:</label>
+              <input type="number" class="form-control" id="editedpersonAge" name="editedpersonAge" />
+            </div>
           </div>
-          <div class="form-group">
-            <label for="editedpersonAge">Age:</label>
-            <input type="number" class="form-control" id="editedpersonAge"  name="editedpersonAge"/>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">
+              Close
+            </button>
+            <button type="button" class="btn btn-warning" id="update-button">
+              Update
+            </button>
           </div>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">
-            Close
-          </button>
-          <button type="button" class="btn btn-warning" id="update-button">
-            Update
-          </button>
         </div>
       </div>
-    </div>
     </form>
   </div>
-    <!-- end update person Modal -->
+  <!-- end update person Modal -->
   <!-- delete person Modal -->
   <div class="modal fade" id="deletePersonModal" tabindex="-1" role="dialog" aria-labelledby="deletePersonModalLabel"
     aria-hidden="true">
@@ -170,36 +270,37 @@
     </div>
   </div>
   <!--end delete person Modal -->
- 
 
- <!-- Scripts -->
- <!-- lib scripts -->
- <script src="assets/lib/jquery/jquery-3.5.1.js"></script>
- <script src="assets/lib/JqueryValidate/jquery.validate.min.js"></script>
- <script src="assets/lib/popper/popper.min.js"></script>
- <script src="assets/lib/bootstrap/bootstrap.min.js"></script>
- <script src="assets/lib/dataTable/jquery.dataTables.min.js"></script>
- <script src="assets/lib/dataTable/dataTables.bootstrap4.min.js"></script>
- <script src="assets/lib/dataTable/dataTables.responsive.min.js"></script>
- <script src="assets/lib/bootstrap/responsive.bootstrap4.min.js"></script>
+
+  <!-- Scripts -->
+  <!-- lib scripts -->
+  <script src="assets/lib/jquery/jquery-3.5.1.js"></script>
+  <script src="assets/lib/JqueryValidate/jquery.validate.min.js"></script>
+  <script src="assets/lib/popper/popper.min.js"></script>
+  <script src="assets/lib/bootstrap/bootstrap.min.js"></script>
+  <script src="assets/lib/dataTable/jquery.dataTables.min.js"></script>
+  <script src="assets/lib/dataTable/dataTables.bootstrap4.min.js"></script>
+  <script src="assets/lib/dataTable/dataTables.responsive.min.js"></script>
+  <script src="assets/lib/bootstrap/responsive.bootstrap4.min.js"></script>
   <script src="assets/lib/chart/chart.js"></script>
- <script src="assets/lib/moment/moment.min.js"></script>
- <!-- end lib scripts -->
+  <script src="assets/lib/moment/moment.min.js"></script>
+  <!-- end lib scripts -->
 
- <!-- project setting loading -->
+  <!-- project setting loading -->
   <script src="projectSettings/generalSetting.js"></script>
   <script src="projectSettings/tableSpecifications.js"></script>
   <script src="projectSettings/formValidationRules.js"></script>
   <!-- end project setting loading -->
- <!-- CRUD scripts -->
- <script src="assets/js/createPerson.js"></script>
- <script src="assets/js/updatePerson.js"></script>
- <script src="assets/js/deletePerson.js"></script>
- <script src="assets/js/showChart.js"></script>
- <!-- end CRUD scripts -->
-   <!-- base js -->
-   <script src="index.js"></script>
-   <!-- end base js -->
+  <!-- CRUD scripts -->
+  <script src="assets/js/createPerson.js"></script>
+  <script src="assets/js/updatePerson.js"></script>
+  <script src="assets/js/deletePerson.js"></script>
+  <script src="assets/js/showChart.js"></script>
+  <script src="assets/js/createSale.js"></script>
+  <!-- end CRUD scripts -->
+  <!-- base js -->
+  <script src="index.js"></script>
+  <!-- end base js -->
 </body>
 
 </html>

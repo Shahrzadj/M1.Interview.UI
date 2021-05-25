@@ -17,6 +17,9 @@ let tableSetting = {
             <button class="btn btn-sm btn-danger delete-button" data-id="${data.id}" data-row=${meta.row} onclick="deletePersonModule.fillInputs(${data.id},${meta.row})" type="button" data-toggle="modal" data-target="#deletePersonModal">
             <i class="fa fa-trash fa-lg" aria-hidden="true"></i>
             </button>   
+            <button class="btn btn-sm btn-info createSale-button" data-id="${data.id}" data-row=${meta.row} onclick="createSaleModule.fillInputs(${data.id},${meta.row})" type="button" data-toggle="modal" data-target="#addSaleModal">
+            <i class=" fa fa-plus-square fa-lg" aria-hidden="true"></i>
+            </button>  
            `;
       },
     },
