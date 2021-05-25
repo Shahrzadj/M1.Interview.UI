@@ -68,4 +68,6 @@ form .error {
   color: #ff0000;
 }
 
-
+.modal{
+  overflow: auto;
+}

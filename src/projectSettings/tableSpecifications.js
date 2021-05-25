@@ -33,7 +33,7 @@ let tableSetting = {
       autoWidth: true,
       fixedHeader: true,
       oLanguage: {
-        sSearchPlaceholder: "Enter your search key word!",
+        sSearchPlaceholder: "Search...",
       },
       lengthMenu: [5, 10, 15],
       buttons: ['copy', 'csv', 'excel'],
