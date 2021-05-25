@@ -27,7 +27,7 @@ var createSaleModule = {
         return { data: addedSale };
     }, 
     clearInputs: function () {
-        $("#newSalePersonId").val(""), $("#newSaleAmount").val(""), $("#newSaleYear").val(""), $("#newSaleMonth").val(""), $("#newSaleDay").val("");
+         $("#newSaleAmount").val(""), $("#newSaleYear").val(""), $("#newSaleMonth").val(""), $("#newSaleDay").val("");
       }
 };
 $("form[name='addSale']").submit(function (e) {
