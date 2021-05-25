@@ -85,6 +85,13 @@ $(function () {
   $("form[name='addSale']").validate({
     // Specify validation rules
     rules: {
+      newSalePersonId: {
+        required: true,
+
+      },
+      newSaleAmount: {
+        required: true,
+      },
       newSaleMonth: {
         required: true,
         min: 1,
