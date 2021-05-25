@@ -27,13 +27,13 @@ let tableSetting = {
       data: this.getPersonnel(),
       aoColumns: this.columns,
       responsive: true,
-      autoWidth:true,
+      autoWidth: true,
       fixedHeader: true,
       oLanguage: {
         sSearchPlaceholder: "Enter your search key word!",
       },
       lengthMenu: [5, 10, 15],
-      buttons: [ 'copy', 'csv', 'excel' ],
+      buttons: ['copy', 'csv', 'excel'],
       dom:
         "<'row'<'col-sm-12 col-md-2 add-button-container'><'col-sm-12 col-md-8'f><'col-sm-12 col-md-2'l>>" +
         "<'row'<'col-sm-12'tr>>" +

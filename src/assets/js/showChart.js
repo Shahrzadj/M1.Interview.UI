@@ -13,34 +13,25 @@ var showChartModule = {
       ctx.canvas.height = 400; // resize to parent height
       var id = $("#deleteId").val();
       $.ajax({
-        url: `${setting.apiGatewayUrl}/gateway/sales/${id}`,
+        url: `${setting.apiGatewayUrl}/gateway/sales`,
         type: "GET",
+        data: {
+          id: id,
+          month: "may"
+        },
         async: false,
         contentType: "application/json; charset=utf-8",
         success: function (response) {
+          console.log(response.dataset);
           $("#showChartModal").modal("toggle");
           var ctx = document.getElementById("myChart").getContext("2d");
           chart = new Chart(ctx, {
-            type: "bar",
+            type: "line",
             data: {
-              labels: [
-                "January",
-                "February",
-                "March",
-                "April",
-                "May",
-                "June",
-                "July",
-                "August",
-                "September",
-                "October",
-                "November",
-                "December",
-              ],
+              labels: response.labelset,
               datasets: [
                 {
-                  label: "Sales Per month",
-                  data: response,
+                  data: response.dataset,
                   backgroundColor: [
                     "rgba(255, 99, 132, 0.5)",
                     "rgba(54, 162, 235, 0.5)",
