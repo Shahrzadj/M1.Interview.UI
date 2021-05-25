@@ -1,5 +1,5 @@
 var setting = {
-    apiGatewayUrl: "https://localhost:5001", // api gateway
+    apiGatewayUrl: "https://api.gateway.developair.ir", // api gateway
     pageTitle: "Personnel Management",
   };
   
