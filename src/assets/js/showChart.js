@@ -26,9 +26,9 @@ $("form[name='getInfo']").submit(function (e) {
 });
 $("#showChartWithInfo").on("click", function (e) {
   e.preventDefault();
-  $("form[name='addPerson']").validate();
-  if ($("form[name='addPerson']").valid()) {
-
+  $("form[name='getInfo']").validate();
+  if ($("form[name='getInfo']").valid()) {
+    show_loader();
     $("#myChart").remove(); // this is  <canvas> element
     $("#canvasContainer").append('<canvas id="myChart"><canvas>');
     canvas = document.querySelector("#myChart");
@@ -50,7 +50,9 @@ $("#showChartWithInfo").on("click", function (e) {
       async: false,
       contentType: "application/json; charset=utf-8",
       success: function (response) {
+
         $("#showChartModal").modal("toggle");
+        hide_loader();
         $("#askForChartInfo").modal("toggle");
         $("#selectedMonth").val("");
         $("#selectedYear").val("");
@@ -109,3 +111,10 @@ $("#showChartWithInfo").on("click", function (e) {
   }
 
 });
+function show_loader() {
+  $("#loader").addClass("loader");
+}
+
+function hide_loader() {
+  $("#loader").removeClass("loader");
+}
