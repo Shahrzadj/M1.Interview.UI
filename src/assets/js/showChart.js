@@ -28,7 +28,9 @@ $("#showChartWithInfo").on("click", function (e) {
   e.preventDefault();
   $("form[name='getInfo']").validate();
   if ($("form[name='getInfo']").valid()) {
-    show_loader();
+    document.getElementById("loadingMessage").innerHTML = "Loading Data...Please Wait!";
+    $('#loadingMessage').show();
+    $("#showChartWithInfo").prop('disabled', true);
     $("#myChart").remove(); // this is  <canvas> element
     $("#canvasContainer").append('<canvas id="myChart"><canvas>');
     canvas = document.querySelector("#myChart");
@@ -50,9 +52,9 @@ $("#showChartWithInfo").on("click", function (e) {
       async: false,
       contentType: "application/json; charset=utf-8",
       success: function (response) {
-
+        $('#loadingMessage').fadeOut("slow");
+        $("#showChartWithInfo").prop('disabled', false);
         $("#showChartModal").modal("toggle");
-        hide_loader();
         $("#askForChartInfo").modal("toggle");
         $("#selectedMonth").val("");
         $("#selectedYear").val("");
@@ -103,7 +105,16 @@ $("#showChartWithInfo").on("click", function (e) {
               y: {
                 beginAtZero: true,
               },
+
             },
+            plugins: {
+              legend: {
+                title: {
+                  display: true,
+                  text: 'For each day of the month,you can see sales amount!',
+                }
+              }
+            }
           },
         });
       },
@@ -111,10 +122,3 @@ $("#showChartWithInfo").on("click", function (e) {
   }
 
 });
-function show_loader() {
-  $("#loader").addClass("loader");
-}
-
-function hide_loader() {
-  $("#loader").removeClass("loader");
-}
