@@ -18,7 +18,7 @@ let tableSetting = {
             <button class="btn btn-sm btn-success createSale-button" title="Add New Sale" data-id="${data.id}" data-row=${meta.row} onclick="createSaleModule.fillInputs(${data.id},${meta.row})" type="button" data-toggle="modal" data-target="#addSaleModal">
             <i class=" fa fa-plus-square fa-lg" aria-hidden="true"></i>
             </button>  
-            <button class="btn btn-sm btn-info showChart-button" title="Show Sales Chart" data-id="${data.id}" data-row=${meta.row} onclick="showChartModule.fillInputs(${data.id},${meta.row})" type="button" >
+            <button class="btn btn-sm btn-info showChart-button" title="Show Sales Chart" data-id="${data.id}" data-row=${meta.row} onclick="showChartModule.fillInputs(${data.id},${meta.row})" type="button" data-toggle="modal" data-target="#askForChartInfo">
             <i class="fa fa-line-chart fa-lg" aria-hidden="true"></i>
             </button>    
            `;
@@ -37,7 +37,7 @@ let tableSetting = {
         sSearchPlaceholder: "Search...",
       },
       lengthMenu: [5, 10, 15],
-      buttons: ['copy', 'csv', 'excel'],
+      buttons: ["copy", "csv", "excel"],
       dom:
         "<'row'<'col-sm-12 col-md-2 add-button-container'><'col-sm-12 col-md-8'f><'col-sm-12 col-md-2'l>>" +
         "<'row'<'col-sm-12'tr>>" +
@@ -63,5 +63,5 @@ let tableSetting = {
     if ($(window).width() > 500) {
       $("#table").addClass("display");
     }
-  }
+  },
 };
