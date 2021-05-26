@@ -101,17 +101,62 @@ $("#showChartWithInfo").on("click", function (e) {
             ],
           },
           options: {
+            responsive: true,
             scales: {
               y: {
                 beginAtZero: true,
               },
 
             },
+            animations: {
+              y: {
+                easing: 'easeInOutElastic',
+                from: (ctx) => {
+                  if (ctx.type === 'data') {
+                    if (ctx.mode === 'default' && !ctx.dropped) {
+                      ctx.dropped = true;
+                      return 0;
+                    }
+                  }
+                }
+              }
+            },
             plugins: {
               legend: {
+
+                labels: {
+                  usePointStyle: true,
+                },
+                tooltip: {
+                  usePointStyle: true,
+                }
+              }
+            },
+            scales: {
+              x: {
+                display: true,
                 title: {
                   display: true,
-                  text: 'For each day of the month,you can see sales amount!',
+                  text: 'Days Of The month',
+                  font: {
+                    family: 'Comic Sans MS',
+                    size: 15,
+                    weight: 'bold',
+                    lineHeight: 1.2,
+                  },
+                }
+              },
+              y: {
+                display: true,
+                title: {
+                  display: true,
+                  text: 'Sales Amount',
+                  font: {
+                    family: 'Comic Sans MS',
+                    size: 15,
+                    weight: 'bold',
+                    lineHeight: 1.2,
+                  },
                 }
               }
             }
